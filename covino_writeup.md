@@ -7,18 +7,17 @@
 
 ### Exercise 1, 2 and 3 pipeline implemented
 #### 1. Completed Exercise 1 steps. Pipeline for filtering and RANSAC plane fitting implemented.
-Followed the tutorial
+Followed the tutorial.
 #### 2. Completed Exercise 2 steps: Pipeline including clustering for segmentation implemented.  
-Followed the tutorial
+Followed the tutorial.
 #### 2. Completed Exercise 3 Steps.  Features extracted and SVM trained.  Object recognition implemented.
-Followed the tutorial. Had some troubles with the Sklearn package. The code written by Udacity was not compatible with the recent version of SKlearn. Initially, I tried to change the code to fit with the updates, but decided a pip install to an older version was more efficient. 
+Followed the tutorial. I Had troubles with the Sklearn package. The code written by Udacity was not compatible with the recent version of SKlearn. Initially, I tried to change the code to fit with the updates, but decided a pip install to an older version was more efficient. 
 
 Trained model results from training excerise, below.
 
 ![image-1](./training_result_Excercise.png)
 
-Trained model results from Project, below.  Notice improvements to object calls. This was accomplished with
-
+Trained model results from Project, below.  Notice improvements to object calls. This was accomplished by increasing the iterations in the for loop in the capture features script.
 
 ![image-2](./Training_result_project.png)
 
@@ -52,6 +51,8 @@ World 3 was succesful with 7/8:
 ### Discussion
 Despite the project being primarly written by Udacity, I had trouble getting through it. There were multiple hurdles from errors in transferring Udacity's code and compatibility issues with Sklearn.  Once I had the trained model in place with excellent accuracy and precision, I knew I was close. However, some final tweaking was required.
 
+Note- I used the following github to troubleshoot my code, especially the pr2_mover(object_list) function found in project_template.py :   https://github.com/chriswernst/Perception-Udacity-RoboticsND-Project3
+
 Changes that resulted in a succesful submision included:
 * y and z axis passthrough filtering
 * values that work for segmenting objects
@@ -60,9 +61,7 @@ Changes that resulted in a succesful submision included:
     ec.set_MaxClusterSize(3000)
 
 * Take into account that all the objects may not be detected in World 3
-	The code below handle the situation, see * sections.
-	If an object from the pick list was detected then it was processed.
-
+	The code below handled the situation, see * sections. If an object from the pick list was detected then it was processed.
 	~~~~
     object_centroid_dict = {}  *
     detected_name_list = []
