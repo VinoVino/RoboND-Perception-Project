@@ -13,11 +13,12 @@ Followed the tutorial
 #### 2. Completed Exercise 3 Steps.  Features extracted and SVM trained.  Object recognition implemented.
 Followed the tutorial. Had some troubles with the Sklearn package. The code written by Udacity was not compatible with the recent version of SKlearn. Initially, I tried to change the code to fit with the updates, but decided a pip install to an older version was more efficient. 
 
-Trained model results from training excerise is seen below.
+Trained model results from training excerise, below.
 
 ![image-1](./training_result_Excercise.png)
 
-Trained model results from Project is seen below
+Trained model results from Project, below.  Notice improvements to object calls. This was accomplished with
+
 
 ![image-2](./Training_result_project.png)
 
@@ -59,13 +60,16 @@ Changes that resulted in a succesful submision included:
     ec.set_MaxClusterSize(3000)
 
 * Take into account that all the objects may not be detected in World 3
+	The code below handle the situation, see * sections.
+	If an object from the pick list was detected then it was processed.
+
 	~~~~
-    object_centroid_dict = {}
+    object_centroid_dict = {}  *
     detected_name_list = []
     for object in object_list:
         points_arr = ros_to_pcl(object.cloud).to_array()
-        object_centroid_dict[object.label] = np.mean(points_arr, axis=0)[:3]
-        detected_name_list.append(object.label)
+        object_centroid_dict[object.label] = np.mean(points_arr, axis=0)[:3]  *
+        detected_name_list.append(object.label) 
 
     dict_list = []
     object_list_param = rospy.get_param('/object_list')
@@ -74,7 +78,7 @@ Changes that resulted in a succesful submision included:
         object_name.data = object_list_param[i]['name']
         item_name= object_list_param[i]['name']
 
-        if item_name in detected_name_list:
+        if item_name in detected_name_list: *
             print item_name
             try:
                 pick_pose.position.x = np.asscalar(object_centroid_dict[item_name][0])

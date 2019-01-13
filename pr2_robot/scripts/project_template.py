@@ -98,9 +98,6 @@ def pcl_callback(pcl_msg):
     cloud_filtered = passthrough_y.filter()
 
 
-
-
-
     # TODO: RANSAC Plane Segmentation
      # Create the segmentation object
     seg = cloud_filtered.make_segmenter()
@@ -238,13 +235,11 @@ def pr2_mover(object_list):
     place_pose = Pose()
     pick_pose = Pose()
 
-
     #centroids = [] # to be list of tuples (x, y, z)
     object_centroid_dict = {}
     detected_name_list = []
     for object in object_list:
         points_arr = ros_to_pcl(object.cloud).to_array()
-        #centroids.append(np.mean(points_arr, axis=0)[:3])
         object_centroid_dict[object.label] = np.mean(points_arr, axis=0)[:3]
         detected_name_list.append(object.label)
 
