@@ -60,14 +60,14 @@ Changes that resulted in a succesful submision included:
     ec.set_MinClusterSize(100)
     ec.set_MaxClusterSize(3000)
 
-* Take into account that all the objects may not be detected in World 3
-	The code below handled the situation, see * sections. If an object from the pick list was detected then it was processed.
+* Take into account that all the objects may not be detected in World 3.
+	The code below handled the situation, see * sections. If an object from the pick list was detected, then it was processed.
 	~~~~
-    object_centroid_dict = {}  *
+    object_centroid_dict = {}  #*
     detected_name_list = []
     for object in object_list:
         points_arr = ros_to_pcl(object.cloud).to_array()
-        object_centroid_dict[object.label] = np.mean(points_arr, axis=0)[:3]  *
+        object_centroid_dict[object.label] = np.mean(points_arr, axis=0)[:3]  #*
         detected_name_list.append(object.label) 
 
     dict_list = []
@@ -77,7 +77,7 @@ Changes that resulted in a succesful submision included:
         object_name.data = object_list_param[i]['name']
         item_name= object_list_param[i]['name']
 
-        if item_name in detected_name_list: *
+        if item_name in detected_name_list: #*
             print item_name
             try:
                 pick_pose.position.x = np.asscalar(object_centroid_dict[item_name][0])
