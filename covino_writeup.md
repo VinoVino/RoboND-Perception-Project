@@ -28,25 +28,13 @@ Trained model results from Project, below.  Notice improvements to object calls.
 The 3 yaml file were generated for worlds 1,2, and 3. 
 
 World-1 was successful with 3/3:
-* biscuits
-* soap
-* soap2
+![image-3](./yaml1.png)
 
 World 2 was successful with 5/5:
-* biscuits
-* soap
-* book
-* soap2
-* glue
+![image-4](./yaml2.png)
 
 World 3 was succesful with 7/8:
-* book
-* snacks
-* biscuits
-* soap2
-* soap
-* glue
-* X missed eraser X
+![image-5](./yaml3.png)
 
 ### Discussion
 Despite the project being primarly written by Udacity, I had trouble getting through it. There were multiple hurdles from errors in transferring Udacity's code and compatibility issues with Sklearn.  Once I had the trained model in place with excellent accuracy and precision, I knew I was close. However, some final tweaking was required.
